@@ -46,7 +46,8 @@ function App() {
     return (
         <div>
             <form>
-                <input value={firstname} onChange={e => setFirstname(e.target.value)} type="text" placeholder="Firstname"/>
+                <input value={firstname} onChange={e => setFirstname(e.target.value)} type="text"
+                       placeholder="Firstname"/>
                 <input value={lastname} onChange={e => setLastname(e.target.value)} type="text" placeholder="Lastname"/>
 
                 <div className="buttons">

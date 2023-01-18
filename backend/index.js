@@ -2,6 +2,8 @@ const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
 const cors = require('cors');
 
+require('dotenv').config();
+
 const schema = require('./schemas')
 const createUser = require("./services");
 
@@ -29,6 +31,6 @@ app.use('/graphql', graphqlHTTP({
     rootValue: root,
 }))
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`server stated on ${PORT}`));
