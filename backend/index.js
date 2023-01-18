@@ -3,13 +3,34 @@ const {graphqlHTTP} = require('express-graphql');
 const cors = require('cors');
 
 const schema = require('./schemas')
+const createUser = require("./services");
+
+const users = [{id: 1, username: 'Oak', age: 40}] // crutch
 
 const app = express();
 
 app.use(cors())
+
+const root = {
+    getAllUsers: () => {
+        return users;
+    },
+
+    getUser: ({id}) => {
+        return users.find(user => user.id == id)
+    },
+
+    createUser: ({input}) => {
+        const user = createUser(input);
+        users.push(user);
+        return user;
+    },
+}
+
 app.use('/graphql', graphqlHTTP({
     graphiql: true,
-    schema
+    schema: schema,
+    rootValue: root,
 }))
 
 const PORT = 5000;

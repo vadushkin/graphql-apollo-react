@@ -14,7 +14,29 @@ const schema = buildSchema(`
         title: String
         body: String
     }
-
+    
+    input UserInput {
+        id: ID
+        username: String!
+        age: Int!
+        posts: [PostInput]
+    }
+    
+    input PostInput {
+        id: ID
+        title: String!
+        body: String!
+    }
+    
+    type Query {
+        getAllUsers: [User]
+        getUser(id: ID): User
+    }
+    
+    type Mutation {
+        createUser(input: UserInput): User
+    }
+    
 `)
 
 module.exports = schema;
