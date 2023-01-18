@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  backend:
+    container_name: "graphql_node_backend"
+    build: backend
+    ports:
+      - "5000:5000"
+    networks:
+      network:
+
+  frontend:
+    container_name: "graphql_react_frontend"
+    build: frontend
+    ports:
+      - "3000:3000"
+    networks:
+      network:
+
+networks:
+  network:
+    driver: bridge
