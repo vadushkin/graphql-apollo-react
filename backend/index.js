@@ -5,7 +5,7 @@ const cors = require('cors');
 const schema = require('./schemas')
 const createUser = require("./services");
 
-const users = [{id: 1, username: 'Oak', age: 40}] // crutch
+const users = [{id: 1, firstname: 'Oak', lastname: 'Latch'}] // crutch
 
 const app = express();
 
@@ -14,10 +14,6 @@ app.use(cors())
 const root = {
     getAllUsers: () => {
         return users;
-    },
-
-    getUser: ({id}) => {
-        return users.find(user => user.id == id)
     },
 
     createUser: ({input}) => {

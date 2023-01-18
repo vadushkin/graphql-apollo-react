@@ -4,8 +4,8 @@ const schema = buildSchema(`
     
     type User {
         id: ID
-        username: String
-        age: Int
+        firstname: String
+        lastname: String
         posts: [Post]
     }
     
@@ -17,8 +17,8 @@ const schema = buildSchema(`
     
     input UserInput {
         id: ID
-        username: String!
-        age: Int!
+        firstname: String!
+        lastname: String!
         posts: [PostInput]
     }
     
@@ -30,7 +30,6 @@ const schema = buildSchema(`
     
     type Query {
         getAllUsers: [User]
-        getUser(id: ID): User
     }
     
     type Mutation {
